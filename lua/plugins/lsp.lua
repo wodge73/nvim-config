@@ -1,11 +1,19 @@
 return {
-  "neovim/nvim-lspconfig",
-  event = "BufReadPre",
-  config = function()
-    require("lspconfig").pyright.setup({})
-  end,
-  keys = {
-    { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
-    { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
-  }
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "pyright" },
+      })
+    end,
+  },
+  { "neovim/nvim-lspconfig" },
 }
+
