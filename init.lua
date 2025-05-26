@@ -1,4 +1,4 @@
-require("keymaps")
-require("options")
+require("core.options")
+require("core.mappings")
+require("core.autocommands")
 require("config.lazy")
-vim.wo.number = true
